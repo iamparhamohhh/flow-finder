@@ -1,8 +1,9 @@
-// ⚠️ START: Updated home_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'flow_chart_screen.dart';
 import 'practices/practices_main_screen.dart'; // ⚠️ تغییر: ایمپورت جدید
+import 'social/social_home_screen.dart';
+import 'personalization/personalization_home_screen.dart';
 import '../providers/quest_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,8 +19,9 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _screens = [
     const FlowChartScreen(),
     const PracticesMainScreen(), // ⚠️ تغییر: از BreathingScreen به PracticesMainScreen
+    const SocialHomeScreen(), // Community
     const Placeholder(), // Journal (فعلاً خالی)
-    const Placeholder(), // Dashboard (فعلاً خالی)
+    const PersonalizationHomeScreen(), // Personalization/Settings
   ];
 
   @override
@@ -57,10 +59,11 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: Icon(Icons.self_improvement),
             label: 'تمرین',
           ),
+          BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Community'),
           BottomNavigationBarItem(icon: Icon(Icons.book), label: 'ژورنال'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.dashboard),
-            label: 'داشبورد',
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
         ],
       ),

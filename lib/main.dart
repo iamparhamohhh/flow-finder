@@ -9,6 +9,10 @@ import 'providers/activity_provider.dart';
 import 'providers/simulation_provider.dart';
 import 'providers/breathing_provider.dart';
 import 'providers/quest_provider.dart';
+import 'providers/social_provider.dart';
+import 'providers/challenge_provider.dart';
+import 'providers/live_session_provider.dart';
+import 'providers/personalization_provider.dart';
 import 'screens/home_screen.dart';
 
 void main() async {
@@ -42,12 +46,26 @@ class MyApp extends StatelessWidget {
         // بقیه Providerها
         ChangeNotifierProvider(create: (_) => SimulationProvider()),
         ChangeNotifierProvider(create: (_) => BreathingProvider()),
+
+        // Social Features Providers
+        ChangeNotifierProvider(create: (_) => SocialProvider()..init()),
+        ChangeNotifierProvider(create: (_) => ChallengeProvider()..init()),
+        ChangeNotifierProvider(create: (_) => LiveSessionProvider()..init()),
+
+        // Personalization Provider
+        ChangeNotifierProvider(
+          create: (_) => PersonalizationProvider()..init(),
+        ),
       ],
-      child: MaterialApp(
-        title: 'Flow Finder',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.blue, useMaterial3: true),
-        home: const HomeScreen(),
+      child: Consumer<PersonalizationProvider>(
+        builder: (context, personalizationProvider, child) {
+          return MaterialApp(
+            title: 'Flow Finder',
+            debugShowCheckedModeBanner: false,
+            theme: personalizationProvider.themeData,
+            home: const HomeScreen(),
+          );
+        },
       ),
     );
   }
