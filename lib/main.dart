@@ -13,6 +13,8 @@ import 'providers/social_provider.dart';
 import 'providers/challenge_provider.dart';
 import 'providers/live_session_provider.dart';
 import 'providers/personalization_provider.dart';
+import 'providers/tracking_provider.dart';
+import 'providers/analytics_provider.dart';
 import 'screens/home_screen.dart';
 
 void main() async {
@@ -55,6 +57,12 @@ class MyApp extends StatelessWidget {
         // Personalization Provider
         ChangeNotifierProvider(
           create: (_) => PersonalizationProvider()..init(),
+        ),
+
+        // Tracking & Analytics Providers
+        ChangeNotifierProvider(create: (_) => TrackingProvider()..initialize()),
+        ChangeNotifierProvider(
+          create: (_) => AnalyticsProvider()..initialize(),
         ),
       ],
       child: Consumer<PersonalizationProvider>(

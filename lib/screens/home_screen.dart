@@ -4,6 +4,7 @@ import 'flow_chart_screen.dart';
 import 'practices/practices_main_screen.dart'; // ⚠️ تغییر: ایمپورت جدید
 import 'social/social_home_screen.dart';
 import 'personalization/personalization_home_screen.dart';
+import 'tracking/tracking_hub_screen.dart';
 import '../providers/quest_provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const FlowChartScreen(),
     const PracticesMainScreen(), // ⚠️ تغییر: از BreathingScreen به PracticesMainScreen
     const SocialHomeScreen(), // Community
-    const Placeholder(), // Journal (فعلاً خالی)
+    const TrackingHubScreen(), // Tracking & Analytics
     const PersonalizationHomeScreen(), // Personalization/Settings
   ];
 
@@ -60,7 +61,10 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'تمرین',
           ),
           BottomNavigationBarItem(icon: Icon(Icons.people), label: 'Community'),
-          BottomNavigationBarItem(icon: Icon(Icons.book), label: 'ژورنال'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.analytics),
+            label: 'Tracking',
+          ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Settings',

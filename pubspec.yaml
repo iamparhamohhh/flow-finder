@@ -45,6 +45,9 @@ dependencies:
   cached_network_image: ^3.4.1
   intl: ^0.19.0
   uuid: ^4.5.1
+  
+  # Enhanced Tracking & Analytics
+  path_provider: ^2.1.5
 
 dev_dependencies:
   flutter_test:

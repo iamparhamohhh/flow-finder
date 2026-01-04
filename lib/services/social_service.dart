@@ -1,6 +1,5 @@
 // lib/services/social_service.dart
 
-import 'dart:convert';
 import 'dart:math';
 import 'package:uuid/uuid.dart';
 import '../models/user_model.dart';
