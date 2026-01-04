@@ -15,6 +15,7 @@ import 'providers/live_session_provider.dart';
 import 'providers/personalization_provider.dart';
 import 'providers/tracking_provider.dart';
 import 'providers/analytics_provider.dart';
+import 'providers/notification_provider.dart';
 import 'screens/home_screen.dart';
 
 void main() async {
@@ -64,6 +65,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => AnalyticsProvider()..initialize(),
         ),
+
+        // Smart Notifications & Reminders Provider
+        ChangeNotifierProvider(create: (_) => NotificationProvider()..init()),
       ],
       child: Consumer<PersonalizationProvider>(
         builder: (context, personalizationProvider, child) {

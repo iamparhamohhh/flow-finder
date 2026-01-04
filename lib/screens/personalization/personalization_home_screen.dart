@@ -11,6 +11,7 @@ import 'voice_selector_screen.dart';
 import 'custom_practice_builder_screen.dart';
 import 'mood_tracker_screen.dart';
 import 'recommendations_screen.dart';
+import '../notifications/notification_settings_screen.dart';
 
 class PersonalizationHomeScreen extends StatelessWidget {
   const PersonalizationHomeScreen({super.key});
@@ -54,10 +55,16 @@ class PersonalizationHomeScreen extends StatelessWidget {
               _buildVolumeCard(context, preferences),
               const SizedBox(height: 24),
 
-              // Practices Section
+              // Custom Practices Section
               _buildSectionHeader('Custom Practices'),
               const SizedBox(height: 12),
               _buildCustomPracticesCard(context, provider),
+              const SizedBox(height: 24),
+
+              // Notifications Section
+              _buildSectionHeader('Notifications'),
+              const SizedBox(height: 12),
+              _buildNotificationsCard(context),
               const SizedBox(height: 24),
 
               // Settings Section
@@ -424,6 +431,62 @@ class PersonalizationHomeScreen extends StatelessWidget {
                     const SizedBox(height: 4),
                     Text(
                       '$patternsCount patterns • $routinesCount routines',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withOpacity(0.7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const Icon(Icons.chevron_right),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNotificationsCard(BuildContext context) {
+    return Card(
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const NotificationSettingsScreen(),
+            ),
+          );
+        },
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Icon(
+                  Icons.notifications_active,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+              const SizedBox(width: 16),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Smart Notifications',
+                      style: Theme.of(context).textTheme.titleMedium,
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'AI reminders & practice schedules',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                         color: Theme.of(
                           context,

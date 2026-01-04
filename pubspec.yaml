@@ -48,6 +48,10 @@ dependencies:
   
   # Enhanced Tracking & Analytics
   path_provider: ^2.1.5
+  
+  # Smart Notifications & Reminders
+  flutter_local_notifications: ^18.0.1
+  table_calendar: ^3.1.2
 
 dev_dependencies:
   flutter_test:
